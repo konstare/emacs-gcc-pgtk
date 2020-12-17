@@ -1,0 +1,41 @@
+#+TITLE: emacs-gcc-pgtk - Dockerfile for building emacs.deb with native-comp and pure GTK
+
+* Summary
+This repository shows a Dockerfile to create a deb package containing a build
+from  [[https://github.com/flatwhatson/emacs][this repository]] branch =pgtk-nativecomp =.
+
+The similar [[https://github.com/konstare/emacs-gcc][repository]] has only nativecomp 
+
+** The repository is the fork of  [[https://github.com/hackenbergstefan/emacs-jit-build][the repository]], with few changes: 
+1. The deb is built for  ubuntu 20.10, so no libgccjit mess.
+2. no xwidgets
+3. no imagemagick. Emacs now supports resizing and rotating of images without ImageMagick.
+4. all =.el= files are compiled. ~make NATIVE_FULL_AOT=1~
+** The package is compiled with flags:
++ --with-nativecomp
++ --with-pgtk
++ --with-mailutils
++ --without-xwidgets
++ --with-modules
++ --with-nativecomp
++ --with-json
++ --without-makeinfo
++ CFLAGS="-O2 -pipe"
+
+* Installation 1: Use [[https://github.com/konstare/emacs-gcc-pgtk/actions][GitHub Actions]]
+The deb package with this recipe is built by =github= and can be found in [[https://github.com/konstare/emacs-gcc-pgtk/actions?query=is%3Acompleted][GitHub Action]].
+
+
+If the deb package is too old: 
+1. fork the project
+2. In =GitHub Actions= allow and run manually the workflow.
+
+* Installation 2: Compile on your own computer
+** Requirements
+1. docker
+** Compilation 
+#+begin_src bash
+git clone https://github.com/konstare/emacs-gcc-pgtk
+cd emacs-gcc-pgtk
+./build.sh
+#+end_src

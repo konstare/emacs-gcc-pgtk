@@ -1,0 +1,22 @@
+name: Build deb package with Docker image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and deploy
+      run: ./build.sh
+
+    - name: Archive artifacs
+      uses: actions/upload-artifact@v2
+      with:
+        name: emacs-gcc-pgtk
+        path: ./deploy/emacs-gcc-pgtk_*.deb
