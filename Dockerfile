@@ -41,7 +41,7 @@ RUN update-ca-certificates \
 ENV CC="gcc-10"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
-    --with-nativecomp \
+    --with-native-compilation \
     --with-pgtk \
     --with-json \
     --with-gnutls  \
@@ -65,8 +65,8 @@ Priority: optional\n\
 Architecture: amd64\n\
 Depends: libgif7, libotf0, libgccjit0, libm17n-0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1\n\
 Maintainer: reichcv@gmail.com\n\
-Description: Emacs with native-comp and pure GTK\n\
-    --with-nativecomp\n\
+Description: Emacs with native compilation and pure GTK\n\
+    --with-native-compilation\n\
     --with-pgtk\n\
     --with-json\n\
     --with-gnutls\n\
