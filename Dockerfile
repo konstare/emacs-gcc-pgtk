@@ -29,7 +29,8 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libtiff-dev \
     libjbig-dev \
     libncurses-dev\
-    liblcms2-dev
+    liblcms2-dev\
+    texinfo
 
 
 # Clone emacs
@@ -49,7 +50,6 @@ RUN ./autogen.sh && ./configure \
     --without-xwidgets \
     --without-toolkit-scroll-bars \
     --without-xaw3d \
-    --without-makeinfo \
     --with-mailutils \
     CFLAGS="-O2 -pipe"
 
@@ -74,7 +74,6 @@ Description: Emacs with native compilation and pure GTK\n\
     --without-xwidgets\n\
     --without-toolkit-scroll-bars\n\
     --without-xaw3d\n\
-    --without-makeinfo\n\
     --with-mailutils\n\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
