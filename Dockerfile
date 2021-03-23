@@ -35,7 +35,8 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
 
 # Clone emacs
 RUN update-ca-certificates \
-    && git clone --depth 1 https://github.com/flatwhatson/emacs -b pgtk-nativecomp emacs \
+    && git clone --depth 10 https://github.com/flatwhatson/emacs -b pgtk-nativecomp emacs \
+    && git reset --hard 64425ee0d82632c71839aa615256e9a438e1d62a\
     && mv emacs/* .
 
 # Build
