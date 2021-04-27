@@ -1,7 +1,6 @@
 FROM ubuntu:20.10
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
-ENV JOBS=5
 
 RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     apt-get update && apt-get install --yes --no-install-recommends  \
@@ -35,7 +34,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
 
 # Clone emacs
 RUN update-ca-certificates \
-    && git clone --depth 10 https://github.com/flatwhatson/emacs -b pgtk-nativecomp emacs \
+    && git clone --depth 1 https://git.savannah.gnu.org/git/emacs.git -b feature/pgtk emacs \
     && mv emacs/* .
 
 # Build
@@ -53,7 +52,7 @@ RUN ./autogen.sh && ./configure \
     --with-mailutils \
     CFLAGS="-O2 -pipe"
 
-RUN make NATIVE_FULL_AOT=1 -j ${JOBS}
+RUN make NATIVE_FULL_AOT=1 -j $(nproc)
 
 # Create package
 RUN EMACS_VERSION=$(sed -ne 's/AC_INIT(GNU Emacs, \([0-9.]\+\), .*/\1/p' configure.ac) \
