@@ -1,7 +1,7 @@
 #+TITLE: emacs-gcc-pgtk - Dockerfile for building emacs.deb with native-comp and pure GTK
 
 * Summary
-This repository shows a Dockerfile to create a emacs deb package with native compilation and pure GTK for Ubuntu 21.04. 
+This repository shows a Dockerfile to create a emacs deb package with native compilation and pure GTK for Ubuntu 21.10. 
 
 ** Notes:
 1. The deb package can be found in [[https://github.com/konstare/emacs-gcc-pgtk/actions/workflows/deploy.yml?query=is%3Acompleted][GitHub Action]].
