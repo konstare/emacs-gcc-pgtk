@@ -49,7 +49,6 @@ RUN ./autogen.sh && ./configure \
     --with-gnutls  \
     --with-rsvg  \
     --without-xwidgets \
-    --without-toolkit-scroll-bars \
     --without-xaw3d \
     --with-mailutils \
     CFLAGS="-O2 -pipe"
@@ -73,7 +72,6 @@ Description: Emacs with native compilation and pure GTK\n\
     --with-gnutls\n\
     --with-rsvg\n\
     --without-xwidgets\n\
-    --without-toolkit-scroll-bars\n\
     --without-xaw3d\n\
     --with-mailutils\n\
  CFLAGS='-O2 -pipe'" \
