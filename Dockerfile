@@ -76,6 +76,6 @@ Description: Emacs with native compilation and pure GTK\n\
     --with-mailutils\n\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
-    && dpkg-deb --build emacs-gcc-pgtk \
+    && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
-    && mv /opt/emacs-gcc-pgtk.deb /opt/deploy
+    && mv /opt/emacs-gcc-pgtk_*.deb /opt/deploy
