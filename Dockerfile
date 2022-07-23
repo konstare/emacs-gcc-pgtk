@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:22.04
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -51,6 +51,7 @@ RUN ./autogen.sh && ./configure \
     --without-xwidgets \
     --without-xaw3d \
     --with-mailutils \
+    --with-xinput2 \
     CFLAGS="-O2 -pipe"
 
 RUN make NATIVE_FULL_AOT=1 -j $(nproc)
@@ -73,6 +74,7 @@ Description: Emacs with native compilation and pure GTK\n\
     --with-rsvg\n\
     --without-xwidgets\n\
     --without-xaw3d\n\
+    --with-xinput2\n \
     --with-mailutils\n\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
