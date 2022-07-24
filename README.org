@@ -18,6 +18,7 @@ This repository shows a Dockerfile to create a emacs deb package with native com
 + --with-modules
 + --with-json
 + --without-makeinfo
++ --with-xinput2
 + CFLAGS="-O2 -pipe"
 
 * Installation 1: Use [[https://github.com/konstare/emacs-gcc-pgtk/actions][GitHub Actions]]
