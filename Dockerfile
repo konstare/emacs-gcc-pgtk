@@ -20,7 +20,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libotf-dev \
     libsystemd-dev \
     libjansson-dev \
-    libgccjit-11-dev \
+    libgccjit-12-dev \
     libgif-dev \
     librsvg2-dev  \
     libxml2-dev \
@@ -40,7 +40,7 @@ RUN update-ca-certificates \
     && mv emacs/* .
 
 # Build
-ENV CC="gcc-11"
+ENV CC="gcc-12"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
     --with-native-compilation \
@@ -64,7 +64,7 @@ Version: ${EMACS_VERSION}\n\
 Section: base\n\
 Priority: optional\n\
 Architecture: amd64\n\
-Depends: libgif7, libotf0, libgccjit0, libm17n-0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp6, libsqlite3-0\n\
+Depends: libgif7, libotf1, libgccjit0, libm17n-0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
 Maintainer: konstare\n\
 Description: Emacs with native compilation and pure GTK\n\
     --with-native-compilation\n\
