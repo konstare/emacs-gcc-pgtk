@@ -20,7 +20,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libotf-dev \
     libsystemd-dev \
     libjansson-dev \
-    libgccjit-12-dev \
+    libgccjit-11-dev \
     libgif-dev \
     librsvg2-dev  \
     libxml2-dev \
@@ -40,7 +40,7 @@ RUN update-ca-certificates \
     && mv emacs/* .
 
 # Build
-ENV CC="gcc-12"
+ENV CC="gcc-11"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
     --with-native-compilation \
