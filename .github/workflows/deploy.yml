@@ -1,4 +1,4 @@
-name: Build deb package with Docker image
+name: Schedule build deb package
 
 on:
   push:
