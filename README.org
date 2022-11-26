@@ -9,7 +9,7 @@ This repository shows a Dockerfile to create a emacs deb package with native com
 3. no xwidgets
 4. no imagemagick. Emacs now supports resizing and rotating of images without ImageMagick.
 5. all =.el= files are compiled. ~make NATIVE_FULL_AOT=1~
-6. The emacs is built with sqlite, webp
+6. The emacs is built with sqlite, webp, tree-sitter
 ** The package is compiled with flags:
 + --with-native-compilation
 + --with-pgtk
