@@ -37,7 +37,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
 
 # Clone emacs
 RUN update-ca-certificates \
-    && git clone --depth 1 https://git.savannah.gnu.org/git/emacs.git emacs \
+    && git clone --depth 1 https://git.savannah.gnu.org/git/emacs.git -b emacs-29 emacs \
     && mv emacs/* .
 
 # Build
