@@ -44,7 +44,6 @@ RUN update-ca-certificates \
 ENV CC="gcc-11"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
-    --with-native-compilation \
     --with-pgtk \
     --with-json \
     --with-gnutls  \
