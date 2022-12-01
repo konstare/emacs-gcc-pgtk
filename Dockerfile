@@ -56,7 +56,7 @@ RUN ./autogen.sh && ./configure \
     --with-native-compilation=aot\
     CFLAGS="-O2 -pipe"
 
-RUN make NATIVE_FULL_AOT=1 -j $(nproc)
+RUN make -j $(nproc)
 
 # Create package
 RUN EMACS_VERSION=$(sed -ne 's/AC_INIT(\[GNU Emacs\], \[\([0-9.]\+\)\], .*/\1/p' configure.ac).$(date +%y.%m.%d.%H) \
