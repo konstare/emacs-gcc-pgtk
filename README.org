@@ -8,17 +8,18 @@ This repository shows a Dockerfile to create a emacs-29 deb package with native 
 2. The emacs source files are [[https://git.savannah.gnu.org/cgit/emacs.git/log/][here]].
 3. no xwidgets
 4. no imagemagick. Emacs now supports resizing and rotating of images without ImageMagick.
-5. all =.el= files are compiled.
+5. all =.el= files are compiled ahead of time.
 6. The emacs is built with sqlite, webp, tree-sitter
 ** The package is compiled with flags:
-+ --with-native-compilation
 + --with-pgtk
-+ --with-mailutils
-+ --without-xwidgets
-+ --with-modules
 + --with-json
-+ --without-makeinfo
++ --with-gnutls
++ --with-rsvg
++ --without-xwidgets
++ --without-xaw3d
++ --with-mailutils
 + --with-xinput2
++ --with-native-compilation=aot
 + CFLAGS="-O2 -pipe"
 
 * Installation 1: Use [[https://github.com/konstare/emacs-gcc-pgtk/actions][GitHub Actions]]
