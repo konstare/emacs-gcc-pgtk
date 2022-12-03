@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/upload-artifact@v2
     - name: Build and deploy
       run: ./build.sh
 
