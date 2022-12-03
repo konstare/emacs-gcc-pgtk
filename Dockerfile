@@ -1,6 +1,8 @@
 FROM ubuntu:22.04
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
+COPY batch.sh /opt/batch.sh
+COPY build_tree_sitter.sh /opt/build_tree_sitter.sh
 
 RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     apt-get update && apt-get install --yes --no-install-recommends  \
@@ -51,9 +53,10 @@ RUN ./autogen.sh && ./configure \
     --without-xwidgets \
     --without-xaw3d \
     --with-mailutils \
-    --with-xinput2 \
-    --with-native-compilation=aot\
+    --with-native-compilation=aot \
     CFLAGS="-O2 -pipe"
+
+
 
 RUN make -j $(nproc)
 
@@ -66,19 +69,22 @@ Section: base\n\
 Priority: optional\n\
 Architecture: amd64\n\
 Depends: libtree-sitter0, libgif7, libotf1, libgccjit0, libm17n-0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
+Conflicts: emacs\n\
 Maintainer: konstare\n\
-Description: Emacs with native compilation and pure GTK\n\
-    --with-native-compilation\n\
-    --with-pgtk\n\
-    --with-json\n\
-    --with-gnutls\n\
-    --with-rsvg\n\
-    --without-xwidgets\n\
-    --without-xaw3d\n\
-    --with-xinput2\n \
-    --with-mailutils\n\
+Description: Emacs with native compilation, pure GTK and tree-sitter\n\
+    --with-pgtk \
+    --with-json \
+    --with-gnutls  \
+    --with-rsvg  \
+    --without-xwidgets \
+    --without-xaw3d \
+    --with-mailutils \
+    --with-native-compilation=aot\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
+    && echo "activate-noawait ldconfig" >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/triggers \
+    && ./batch.sh\
+    && cp dist/* emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
     && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
     && mv /opt/emacs-gcc-pgtk_*.deb /opt/deploy
