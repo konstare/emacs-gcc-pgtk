@@ -5,7 +5,7 @@ This repository shows a Dockerfile to create a emacs-29 deb package with native 
 
 ** Notes:
 1. The deb package can be found in [[https://github.com/konstare/emacs-gcc-pgtk/actions/workflows/deploy.yml?query=is%3Acompleted][GitHub Action]].
-2. The emacs source files are [[https://git.savannah.gnu.org/cgit/emacs.git/log/][here]].
+2. The emacs source files are [[https://git.savannah.gnu.org/cgit/emacs.git/log/?h=emacs-29][here]].
 3. no xwidgets
 4. no imagemagick. Emacs now supports resizing and rotating of images without ImageMagick.
 5. all =.el= files are compiled ahead of time.
