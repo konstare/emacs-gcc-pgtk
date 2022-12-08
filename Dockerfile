@@ -16,7 +16,6 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libgtk-3-dev \
     libgpm-dev \
     liblockfile-dev \
-    libm17n-dev \
     libotf-dev \
     libsystemd-dev \
     libjansson-dev \
@@ -68,7 +67,7 @@ Version: ${EMACS_VERSION}\n\
 Section: base\n\
 Priority: optional\n\
 Architecture: amd64\n\
-Depends: libtree-sitter0, libgif7, libotf1, libgccjit0, libm17n-0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
+Depends: libtree-sitter0, libgif7, libotf1, libgccjit0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
 Conflicts: emacs\n\
 Maintainer: konstare\n\
 Description: Emacs with native compilation, pure GTK and tree-sitter\n\
@@ -85,7 +84,7 @@ Description: Emacs with native compilation, pure GTK and tree-sitter\n\
     && echo "activate-noawait ldconfig" >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/triggers \
     && cd /opt/admin/notes/tree-sitter/build-module\
     && ./batch.sh\
-    && cp dist/* emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
+    && cp dist/* /opt/emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
     && cd /opt \
     && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
