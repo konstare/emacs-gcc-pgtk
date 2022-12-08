@@ -86,7 +86,7 @@ Description: Emacs with native compilation, pure GTK and tree-sitter\n\
     && cd /opt/admin/notes/tree-sitter/build-module\
     && ./batch.sh\
     && cp dist/* emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
-    && cd /opt
+    && cd /opt \
     && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
     && mv /opt/emacs-gcc-pgtk_*.deb /opt/deploy
