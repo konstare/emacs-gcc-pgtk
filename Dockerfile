@@ -1,8 +1,6 @@
 FROM ubuntu:22.04
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
-COPY batch.sh /opt/batch.sh
-COPY build_tree_sitter.sh /opt/build_tree_sitter.sh
 
 RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     apt-get update && apt-get install --yes --no-install-recommends  \
@@ -41,6 +39,8 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
 RUN update-ca-certificates \
     && git clone --depth 1 https://git.savannah.gnu.org/git/emacs.git -b emacs-29 emacs \
     && mv emacs/* .
+
+COPY batch.sh /opt/admin/notes/tree-sitter/build-module/batch.sh
 
 # Build
 ENV CC="gcc-11"
@@ -83,8 +83,10 @@ Description: Emacs with native compilation, pure GTK and tree-sitter\n\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
     && echo "activate-noawait ldconfig" >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/triggers \
+    && cd /opt/admin/notes/tree-sitter/build-module\
     && ./batch.sh\
     && cp dist/* emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
+    && cd /opt
     && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
     && mv /opt/emacs-gcc-pgtk_*.deb /opt/deploy
