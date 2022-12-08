@@ -15,5 +15,5 @@ languages=(
 
 for language in "${languages[@]}"
 do
-    ./build_tree_sitter.sh $language
+    ./build.sh $language
 done
