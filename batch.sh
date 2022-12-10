@@ -11,6 +11,7 @@ languages=(
     'python'
     'typescript'
     'json'
+    'dockerfile'
 )
 
 for language in "${languages[@]}"
