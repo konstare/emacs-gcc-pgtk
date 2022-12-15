@@ -10,7 +10,7 @@ This repository shows a Dockerfile to create a emacs-29 deb package with native 
 4. no imagemagick. Emacs now supports resizing and rotating of images without ImageMagick.
 5. all =.el= files are compiled ahead of time.
 6. The emacs is built with sqlite, webp, tree-sitter
-7. Ubuntu does not have  libtree-sitter-* packages yet. So this package contains these libraries. The build recipe is taken from [[https://github.com/casouri/tree-sitter-module][github.com/casouri]].
+7. Ubuntu does not have  libtree-sitter-* packages yet. So this deb package contains these libraries.
 ** The package is compiled with flags:
 + --with-pgtk
 + --with-json

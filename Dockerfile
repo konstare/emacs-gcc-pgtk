@@ -39,8 +39,6 @@ RUN update-ca-certificates \
     && git clone --depth 1 https://git.savannah.gnu.org/git/emacs.git -b emacs-29 emacs \
     && mv emacs/* .
 
-COPY batch.sh /opt/admin/notes/tree-sitter/build-module/batch.sh
-
 # Build
 ENV CC="gcc-11"
 RUN ./autogen.sh && ./configure \
