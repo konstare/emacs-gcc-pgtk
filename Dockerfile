@@ -80,9 +80,6 @@ Description: Emacs with native compilation, pure GTK and tree-sitter\n\
  CFLAGS='-O2 -pipe'" \
     >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/control \
     && echo "activate-noawait ldconfig" >> emacs-gcc-pgtk_${EMACS_VERSION}/DEBIAN/triggers \
-    && cd /opt/admin/notes/tree-sitter/build-module\
-    && ./batch.sh\
-    && cp dist/* /opt/emacs-gcc-pgtk_${EMACS_VERSION}/usr/local/lib/ \
     && cd /opt \
     && dpkg-deb --build emacs-gcc-pgtk_${EMACS_VERSION} \
     && mkdir /opt/deploy \
