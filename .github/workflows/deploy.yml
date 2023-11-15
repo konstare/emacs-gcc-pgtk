@@ -2,15 +2,18 @@ name: Schedule build deb package
 
 on:
   push:
-    branches: [ main ]
+    branches:
+	- 'Debian'
+    	-  main
   pull_request:
-    branches: [ main ]
+	- 'Debian'
+    	-  main
   schedule:
     - cron: "0 0 * * *"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build and deploy
