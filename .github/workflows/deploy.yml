@@ -2,12 +2,10 @@ name: Schedule build deb package
 
 on:
   push:
-    branches:
-        - 'Debian'
-        -  main
   pull_request:
-        - 'Debian'
-        -  main
+    branches:
+      - main
+      - Debian
   schedule:
     - cron: "0 0 * * *"
 
