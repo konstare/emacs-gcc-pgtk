@@ -1,9 +1,8 @@
-FROM ubuntu:22.04
+FROM  debian:latest
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
-    apt-get update && apt-get install --yes --no-install-recommends  \
+RUN apt-get update && apt-get install --yes --no-install-recommends  \
     apt-transport-https\
     ca-certificates\
     build-essential \
@@ -19,7 +18,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libotf-dev \
     libsystemd-dev \
     libjansson-dev \
-    libgccjit-11-dev \
+    libgccjit-12-dev \
     libgif-dev \
     librsvg2-dev  \
     libxml2-dev \
@@ -40,7 +39,7 @@ RUN update-ca-certificates \
     && mv emacs/* .
 
 # Build
-ENV CC="gcc-11"
+ENV CC="gcc-12"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
     --with-pgtk \
