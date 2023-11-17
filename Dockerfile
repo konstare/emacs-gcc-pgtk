@@ -64,7 +64,7 @@ Version: ${EMACS_VERSION}\n\
 Section: base\n\
 Priority: optional\n\
 Architecture: amd64\n\
-Depends: libtree-sitter0, libgif7, libotf1, libgccjit0, libgtk-3-0, librsvg2-2, libtiff5, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
+Depends: libtree-sitter0, libgif7, libotf1, libgccjit0, libgtk-3-0, librsvg2-2, libtiff6, libjansson4, libacl1, libgmp10, libwebp7, libsqlite3-0\n\
 Conflicts: emacs\n\
 Maintainer: konstare\n\
 Description: Emacs with native compilation, pure GTK and tree-sitter\n\

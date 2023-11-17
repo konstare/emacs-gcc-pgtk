@@ -2,14 +2,14 @@ name: Manually build deb package with Docker image
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Debian ]
   pull_request:
-    branches: [ main ]
+    branches: [ Debian ]
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build and deploy
